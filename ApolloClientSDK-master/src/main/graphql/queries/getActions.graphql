@@ -1,0 +1,16 @@
+query getActions($appExp: ActionFilter!){
+
+    actions(filterBy: $appExp) {
+
+         id
+         name
+         canonicalName
+         createdAt
+         updatedAt
+         createdBy
+         updatedBy
+         description
+
+    }
+
+}

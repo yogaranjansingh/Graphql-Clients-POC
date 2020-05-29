@@ -1,0 +1,21 @@
+mutation createRole($appExp: RoleInput!) {
+
+ createRole(with: $appExp)
+     {
+
+        id
+        description
+        canonicalName
+        name
+        accountId
+        isComposite
+        customData
+        usersAssigned
+        createdAt
+        updatedAt
+        createdBy
+        updatedBy
+
+     }
+
+ }

@@ -1,0 +1,17 @@
+mutation createAction($appExp: ActionInput!) {
+
+ createAction(with: $appExp)
+     {
+
+     id
+     name
+     canonicalName
+     createdAt
+     updatedAt
+     createdBy
+     updatedBy
+     description
+
+     }
+
+ }

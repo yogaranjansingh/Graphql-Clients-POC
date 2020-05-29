@@ -1,0 +1,16 @@
+query getActions{
+
+    actions(filterBy: {}) {
+
+         id
+         name
+         canonicalName
+         createdAt
+         updatedAt
+         createdBy
+         updatedBy
+         description
+
+    }
+
+}

@@ -1,0 +1,16 @@
+mutation updateAction($id: ID! $appExp: ActionInput!) {
+
+ updateAction(id: $id with: $appExp)
+     {
+
+     id
+     name
+     canonicalName
+     createdAt
+     updatedAt
+     createdBy
+     updatedBy
+     description
+
+     }
+ }

@@ -1,0 +1,17 @@
+mutation createResource($appExp: ResourceInput!) {
+
+ createResource(with: $appExp)
+     {
+
+    id
+    name
+    canonicalName
+    description
+    createdAt
+    updatedAt
+    createdBy
+    updatedBy
+
+     }
+
+ }

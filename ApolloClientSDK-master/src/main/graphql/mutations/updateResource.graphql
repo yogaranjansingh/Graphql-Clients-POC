@@ -1,0 +1,16 @@
+mutation updateResource($id: ID! $appExp: ResourceInput!) {
+
+ updateResource(id: $id with: $appExp)
+     {
+
+    id
+    name
+    canonicalName
+    description
+    createdAt
+    updatedAt
+    createdBy
+    updatedBy
+
+     }
+ }

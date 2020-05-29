@@ -1,0 +1,15 @@
+query getPermissions($appExp: PermissionFilter!){
+
+    permissions(filterBy: $appExp) {
+
+         name
+         id
+         description
+         canonicalName
+         createdAt
+         updatedAt
+         createdBy
+         updatedBy
+    }
+
+}

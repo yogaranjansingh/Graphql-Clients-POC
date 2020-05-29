@@ -1,0 +1,222 @@
+
+type Query {
+    # For forward pagination, use after cursor ( cursor is available as a field ) and first.
+    # For backward pagination, use before cursor ( cursor is available as a field ) and last.
+    # Using both after/before and/or last/first is highy discouraged and can lead to confusing results.
+    # Apply after, before, first and last pagination filters normally as other filter parameters.
+
+    # Query Resources by applying one or more filters
+    # ResourceConnection returns the edges whose type is of Resource.
+    resources(filterBy:ResourceFilter!):ResourceConnection
+    # Query Roles by applying one or more filters
+    # RoleConnection returns the edges whose type is of Role.
+    roles(filterBy:RoleFilter!):RoleConnection
+    # Query Actions by applying one or more Filter
+    actions(filterBy:ActionFilter!):[Action]
+    # Query Permissions by applying one or more Filter
+    permissions(filterBy:PermissionFilter!):[Permission]
+}
+
+scalar Date
+
+enum State {
+    ACTIVE,
+    PUBLISHED,
+    IN_DRAFT,
+    DISABLED,
+    PROMOTED
+}
+
+interface Metadata {
+    createdAt: Date
+    updatedAt: Date
+    createdBy: String
+    updatedBy: String
+}
+
+input PermissionFilter {
+    id:ID
+    canonicalName:String
+}
+
+input ActionFilter {
+    id:ID
+    canonicalName:String
+    resource:String
+}
+
+input ResourceFilter {
+    id: ID
+    canonicalName:String
+    parentCanonicalName:String
+    state:State
+    first:ID
+    last:ID
+    before:String
+    after:String
+}
+
+input RoleFilter {
+    id:ID
+    canonicalName:String
+    accountId:String
+    profileId:String
+    first:ID
+    last:ID
+    before:String
+    after:String
+}
+
+type RoleConnection {
+    edges:[RoleEdge]
+    pageInfo:PageInfo
+}
+
+type RoleEdge{
+    cursor:String
+    node:Role
+}
+
+type ResourceConnection {
+    edges:[ResourceEdge]
+    pageInfo:PageInfo
+}
+
+type ResourceEdge{
+    cursor:String
+    node:Resource
+}
+
+type PageInfo{
+    hasPreviousPage:Boolean
+    hasNextPage:Boolean
+}
+
+type UserAssignment implements Metadata{
+    id: ID!
+    profileId: String!
+    roles: [Role]!
+    isActive: Boolean!
+    createdAt:Date
+    updatedAt:Date
+    createdBy:String
+    updatedBy:String
+}
+
+type Role implements Metadata{
+    id : ID!
+    description:String
+    canonicalName:String
+    name:String
+    accountId:String
+    isComposite:Boolean
+    state:State
+    subRoles:[Role]
+    permissions:[Permission]
+    customData:String
+    namespace:NameSpace
+    usersAssigned:ID
+    createdAt:Date
+    updatedAt:Date
+    createdBy:String
+    updatedBy:String
+}
+
+
+type Action implements Metadata{
+    id:ID!
+    name:String
+    canonicalName:String!
+    createdAt:Date
+    updatedAt:Date
+    createdBy:String
+    updatedBy:String
+    description:String
+}
+
+
+
+type Resource implements Metadata{
+    id:ID!
+    name:String
+    canonicalName:String!
+    parentResource:Resource!
+    roles(
+        offset:ID = 0
+        limit:ID = 5
+    ):[String]
+    description:String
+    state:State
+    createdAt:Date
+    updatedAt:Date
+    createdBy:String
+    updatedBy:String
+}
+
+enum NameSpace {
+    INTUIT
+    ACCOUNT
+    TSHEET
+}
+type Permission implements Metadata{
+    name:String
+    id:ID!
+    description:String
+    action:Action!
+    resource:Resource!
+    canonicalName:String
+    createdAt:Date
+    updatedAt:Date
+    createdBy:String
+    updatedBy:String
+}
+
+input ResourceInput {
+    actions:[String]
+    description:String
+    parentCanonicalName:String
+    name:String
+    canonicalName:String
+    state:State
+}
+
+input ActionInput{
+    name:String
+    canonicalName:String
+    description:String
+}
+
+input RoleInput {
+    name:String
+    canonicalName:String
+    description:String
+    permissions:[String]
+    accountId:String
+    nameSpace:NameSpace
+    subRoles:[String]
+    customData:String
+    state:State
+}
+
+input AssignRole {
+    profileId:String!
+    accountId:String
+    roles:[String]!
+}
+
+type Mutation {
+    # Create an action
+    createAction(with:ActionInput!):Action
+    # Create a resource
+    createResource(with:ResourceInput!):Resource
+    # Create a role
+    createRole(with:RoleInput!):Role
+    # Update an action either with id or providing canonicalName in ActionInput
+    updateAction(id:ID,with:ActionInput!):Action
+    # Update a resource either with id or providing canonicalName in ResourceInput
+    updateResource(id:ID,with:ResourceInput!):Resource
+    # Update a role either with id or providing canonicalName in RoleInput
+    updateRole(id:ID,with:RoleInput!):Role
+    # Assign a role owned by account or a system role to a profile.
+    assignRole(with:AssignRole!):UserAssignment
+}

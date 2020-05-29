@@ -1,0 +1,29 @@
+query getRoles($appExp: RoleFilter!){
+
+     roles(filterBy: {}) {
+
+          edges{
+            cursor
+            node {
+                    id
+                    description
+                    canonicalName
+                    name
+                    accountId
+                    isComposite
+                    state
+                    customData
+                    usersAssigned
+                    createdAt
+                    updatedAt
+                    createdBy
+                    updatedBy
+            }
+          }
+          pageInfo{
+              hasPreviousPage
+              hasNextPage
+          }
+     }
+
+ }

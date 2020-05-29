@@ -1,0 +1,24 @@
+query getResources{
+
+     resources(filterBy: {} ) {
+
+          edges{
+             cursor
+             node   {
+                    id
+                    name
+                    canonicalName
+                    description
+                    createdAt
+                    updatedAt
+                    createdBy
+                    updatedBy
+             }
+          }
+          pageInfo{
+              hasPreviousPage
+              hasNextPage
+          }
+     }
+
+ }

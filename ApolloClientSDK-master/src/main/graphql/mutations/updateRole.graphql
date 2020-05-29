@@ -1,0 +1,20 @@
+mutation updateRole($id: ID! $appExp: RoleInput!) {
+
+ updateRole(id: $id with: $appExp)
+     {
+
+        id
+        description
+        canonicalName
+        name
+        accountId
+        isComposite
+        customData
+        usersAssigned
+        createdAt
+        updatedAt
+        createdBy
+        updatedBy
+
+     }
+ }

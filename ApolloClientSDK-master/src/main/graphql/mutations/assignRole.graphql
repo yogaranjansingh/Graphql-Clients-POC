@@ -1,0 +1,15 @@
+mutation assignRole($appExp: AssignRole!) {
+
+ assignRole(with: $appExp)
+     {
+        id
+        profileId
+        isActive
+        createdAt
+        updatedAt
+        createdBy
+        updatedBy
+
+     }
+
+ }

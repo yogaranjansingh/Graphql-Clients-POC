@@ -1,0 +1,173 @@
+{
+	"operations": [
+		{
+			"filePath": "/Users/ysingh1/Code/rpasClient/target/graphql-schema/src/main/graphql/com/coxautodev/java/graphql/client/tests/queries/getActions.graphql",
+			"operationName": "getActions",
+			"operationType": "query",
+			"rootType": "Query",
+			"variables": [],
+			"source": "query getActions {\n  actions(filterBy: {}) {\n    id\n    name\n    canonicalName\n    createdAt\n    updatedAt\n    createdBy\n    updatedBy\n    description\n  }\n}",
+			"fields": [
+				{
+					"responseName": "actions",
+					"fieldName": "actions",
+					"type": "[Action]",
+					"args": [
+						{
+							"name": "filterBy",
+							"value": {}
+						}
+					],
+					"description": "Query Actions by applying one or more Filter",
+					"isDeprecated": false,
+					"deprecationReason": null,
+					"fields": [
+						{
+							"responseName": "id",
+							"fieldName": "id",
+							"type": "ID!",
+							"isDeprecated": false,
+							"deprecationReason": null
+						},
+						{
+							"responseName": "name",
+							"fieldName": "name",
+							"type": "String",
+							"isDeprecated": false,
+							"deprecationReason": null
+						},
+						{
+							"responseName": "canonicalName",
+							"fieldName": "canonicalName",
+							"type": "String!",
+							"isDeprecated": false,
+							"deprecationReason": null
+						},
+						{
+							"responseName": "createdAt",
+							"fieldName": "createdAt",
+							"type": "Date",
+							"isDeprecated": false,
+							"deprecationReason": null
+						},
+						{
+							"responseName": "updatedAt",
+							"fieldName": "updatedAt",
+							"type": "Date",
+							"isDeprecated": false,
+							"deprecationReason": null
+						},
+						{
+							"responseName": "createdBy",
+							"fieldName": "createdBy",
+							"type": "String",
+							"isDeprecated": false,
+							"deprecationReason": null
+						},
+						{
+							"responseName": "updatedBy",
+							"fieldName": "updatedBy",
+							"type": "String",
+							"isDeprecated": false,
+							"deprecationReason": null
+						},
+						{
+							"responseName": "description",
+							"fieldName": "description",
+							"type": "String",
+							"isDeprecated": false,
+							"deprecationReason": null
+						}
+					],
+					"fragmentSpreads": [],
+					"inlineFragments": []
+				}
+			],
+			"fragmentsReferenced": [],
+			"sourceWithFragments": "query getActions {\n  actions(filterBy: {}) {\n    id\n    name\n    canonicalName\n    createdAt\n    updatedAt\n    createdBy\n    updatedBy\n    description\n  }\n}",
+			"operationId": "1706446786608139ac2415e710c411041f010bc210dff02dee11616bf828514e"
+		},
+		{
+			"filePath": "/Users/ysingh1/Code/rpasClient/target/graphql-schema/src/main/graphql/com/coxautodev/java/graphql/client/tests/queries/getResources.graphql",
+			"operationName": "getResources",
+			"operationType": "query",
+			"rootType": "Query",
+			"variables": [],
+			"source": "query getResources {\n  resources(filterBy: {}) {\n    edges {\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      hasNextPage\n    }\n  }\n}",
+			"fields": [
+				{
+					"responseName": "resources",
+					"fieldName": "resources",
+					"type": "ResourceConnection",
+					"args": [
+						{
+							"name": "filterBy",
+							"value": {}
+						}
+					],
+					"description": "Query Resources by applying one or more filters\nResourceConnection returns the edges whose type is of Resource.",
+					"isDeprecated": false,
+					"deprecationReason": null,
+					"fields": [
+						{
+							"responseName": "edges",
+							"fieldName": "edges",
+							"type": "[ResourceEdge]",
+							"isDeprecated": false,
+							"deprecationReason": null,
+							"fields": [
+								{
+									"responseName": "cursor",
+									"fieldName": "cursor",
+									"type": "String",
+									"isDeprecated": false,
+									"deprecationReason": null
+								}
+							],
+							"fragmentSpreads": [],
+							"inlineFragments": []
+						},
+						{
+							"responseName": "pageInfo",
+							"fieldName": "pageInfo",
+							"type": "PageInfo",
+							"isDeprecated": false,
+							"deprecationReason": null,
+							"fields": [
+								{
+									"responseName": "hasPreviousPage",
+									"fieldName": "hasPreviousPage",
+									"type": "Boolean",
+									"isDeprecated": false,
+									"deprecationReason": null
+								},
+								{
+									"responseName": "hasNextPage",
+									"fieldName": "hasNextPage",
+									"type": "Boolean",
+									"isDeprecated": false,
+									"deprecationReason": null
+								}
+							],
+							"fragmentSpreads": [],
+							"inlineFragments": []
+						}
+					],
+					"fragmentSpreads": [],
+					"inlineFragments": []
+				}
+			],
+			"fragmentsReferenced": [],
+			"sourceWithFragments": "query getResources {\n  resources(filterBy: {}) {\n    edges {\n      cursor\n    }\n    pageInfo {\n      hasPreviousPage\n      hasNextPage\n    }\n  }\n}",
+			"operationId": "229c609cca2831de12741d1b13976b7b8e35d2095c48f664cc5cbe599734a05d"
+		}
+	],
+	"fragments": [],
+	"typesUsed": [
+		{
+			"kind": "ScalarType",
+			"name": "Date",
+			"description": ""
+		}
+	]
+}

@@ -1,0 +1,15 @@
+query getResources{
+
+    resources(filterBy: {}) {
+
+         edges{
+            cursor
+
+         }
+         pageInfo{
+             hasPreviousPage
+             hasNextPage
+         }
+    }
+
+}
